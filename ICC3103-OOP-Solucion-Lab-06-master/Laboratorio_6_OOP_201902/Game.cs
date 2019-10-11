@@ -215,7 +215,23 @@ namespace Laboratorio_6_OOP_201902
         }
         public int GetRoundWinner()
         {
-            return 1;
+            int[] ap = boardGame.GetAttackPoints();
+            int p1 = ap[0];
+            int p2 = ap[1];
+
+            if (p1 < p2)
+            {
+                return 1;
+            }
+            else if (p1 > p2)
+            {
+                return 0;
+            }
+            else
+            {
+                return -1;
+            }
+
         }
     }
 }
