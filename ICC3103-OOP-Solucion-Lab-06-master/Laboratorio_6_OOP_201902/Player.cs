@@ -181,9 +181,9 @@ namespace Laboratorio_6_OOP_201902
         }
         public int[] GetAttackPoints(EnumType line = EnumType.None)
         {
-            int[] ap = new int[] { 0 };
-            foreach(Card card in board.PlayerCards){}
-            return ap;
+            int [] ap = Board.GetAttackPoints();
+            int[] ap2 = new int[] { ap[id] };      
+            return ap2   ;
         }
     
             
