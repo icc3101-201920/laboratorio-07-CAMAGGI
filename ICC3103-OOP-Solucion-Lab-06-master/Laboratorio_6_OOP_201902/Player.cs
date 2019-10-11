@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Laboratorio_6_OOP_201902
 {
-    public class Player
+    public class Player : IAttackPoints
     {
         //Constantes
         private const int LIFE_POINTS = 2;
@@ -21,7 +21,7 @@ namespace Laboratorio_6_OOP_201902
         private int attackPoints;
         private Deck deck;
         private Hand hand;
-        private Board board;
+        public Board board;
         private SpecialCard captain;
 
         //Constructor
@@ -31,6 +31,7 @@ namespace Laboratorio_6_OOP_201902
             AttackPoints = START_ATTACK_POINTS;
             Deck = new Deck();
             Hand = new Hand();
+            Board = new Board();
             Id = idCounter++;
         }
 
@@ -112,7 +113,7 @@ namespace Laboratorio_6_OOP_201902
         }
         public void PlayCard(int cardId, EnumType buffRow = EnumType.None)
         {
-            
+
             Card tempCard = CreateTempCard(cardId, false);
 
             if (tempCard is CombatCard)
@@ -148,7 +149,7 @@ namespace Laboratorio_6_OOP_201902
         public void FirstHand()
         {
             Random random = new Random();
-            for (int i = 0; i<10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 DrawCard(random.Next(0, deck.Cards.Count));
             }
@@ -175,7 +176,16 @@ namespace Laboratorio_6_OOP_201902
                 SpecialCard card = cardList.Cards[cardId] as SpecialCard;
                 return new SpecialCard(card.Name, card.Type, card.Effect);
             }
-        }
 
+
+        }
+        public int[] GetAttackPoints(EnumType line = EnumType.None)
+        {
+            int[] ap = new int[] { 0 };
+            foreach(Card card in board.PlayerCards){}
+            return ap;
+        }
+    
+            
     }
 }
