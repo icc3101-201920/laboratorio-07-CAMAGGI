@@ -21,7 +21,7 @@ namespace Laboratorio_6_OOP_201902
         private int attackPoints;
         private Deck deck;
         private Hand hand;
-        public Board board;
+        private Board board;
         private SpecialCard captain;
 
         //Constructor
@@ -181,9 +181,9 @@ namespace Laboratorio_6_OOP_201902
         }
         public int[] GetAttackPoints(EnumType line = EnumType.None)
         {
-            int [] ap = Board.GetAttackPoints();
+            int [] ap = Board.GetAttackPoints(line);
             int[] ap2 = new int[] { ap[id] };      
-            return ap2   ;
+           return ap2   ;
         }
     
             

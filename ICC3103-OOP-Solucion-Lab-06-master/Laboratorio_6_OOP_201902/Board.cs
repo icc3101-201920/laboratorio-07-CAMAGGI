@@ -118,8 +118,16 @@ namespace Laboratorio_6_OOP_201902
 
         public int[] GetAttackPoints(EnumType line = EnumType.None)
         {
-            List<EnumType> ListEnums = new List<EnumType> { EnumType.longRange, EnumType.melee, EnumType.range };
-
+            List<EnumType> ListEnums;
+            if (line == EnumType.None)
+            {
+                ListEnums = new List<EnumType> { line };
+            }
+            else
+            {
+                ListEnums = new List<EnumType> { EnumType.longRange, EnumType.melee, EnumType.range };
+            }
+            
             int[] totalAttack = new int[] { 0, 0 };
             foreach (EnumType e in ListEnums)
             {

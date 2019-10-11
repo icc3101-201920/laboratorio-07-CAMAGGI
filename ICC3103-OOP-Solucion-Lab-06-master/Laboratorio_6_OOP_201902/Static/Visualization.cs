@@ -98,9 +98,48 @@ namespace Laboratorio_6_OOP_201902.Static
             Console.ResetColor();
             Console.Clear();
         }
+        public static void ShowAttackPointsByCard(List<Card> Cards)
+        {
+            foreach(Card c in Cards)
+            {
+                CombatCard cc = c as CombatCard;
+                Console.Write($"|{cc.AttackPoints}|");
+            }
+        }
         public static void ShowBoard(Board board, int player, int[] lifePoints, int[] attackPoints)
         {
+            int opponent;
+            if (player == 1)
+            {
+                opponent = 0;
+            }
+            else
+            {
+                opponent = 1;
+            }
+            Console.WriteLine($"Opponent - LifePoints: {lifePoints[opponent]} - AttackPoints: {attackPoints[opponent]}");
+            Console.WriteLine($"(longRange) [{board.GetAttackPoints(EnumType.longRange)[opponent]}]:");
+            ShowAttackPointsByCard(board.PlayerCards[opponent][EnumType.longRange]);
+            Console.WriteLine($"(range) [{board.GetAttackPoints(EnumType.range)[opponent]}]:");
+            ShowAttackPointsByCard(board.PlayerCards[opponent][EnumType.range]);
+            Console.WriteLine($"(melee) [{board.GetAttackPoints(EnumType.melee)[opponent]}]:");
+            ShowAttackPointsByCard(board.PlayerCards[opponent][EnumType.melee]);
+            Console.Write("Weather Cards: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            
+            foreach (Card card in board.WeatherCards)
+            {
+                Console.Write($"|{card.Name}|");
+            }
+            Console.ResetColor();
+            Console.WriteLine($"You - LifePoints: {lifePoints[player]} - AttackPoints: {attackPoints[player]}");
 
+            Console.WriteLine($"(melee) [{board.GetAttackPoints(EnumType.melee)[player]}]:");
+            ShowAttackPointsByCard(board.PlayerCards[player][EnumType.melee]);
+            Console.WriteLine($"(range) [{board.GetAttackPoints(EnumType.range)[player]}]:");
+            ShowAttackPointsByCard(board.PlayerCards[player][EnumType.range]);
+            Console.WriteLine($"(longRange) [{board.GetAttackPoints(EnumType.longRange)[player]}]:");
+            ShowAttackPointsByCard(board.PlayerCards[player][EnumType.longRange]);
         }
     }
     
